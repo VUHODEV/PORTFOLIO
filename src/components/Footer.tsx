@@ -38,14 +38,18 @@ const Footer = () => {
               <Phone size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://github.com/hduyvu" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-100 transition-colors"
               aria-label="GitHub"
             >
               <Github size={20} />
             </a>
             <a 
-              href="#" 
+              href="https://linkedin.com/in/duyvu" 
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-blue-100 transition-colors"
               aria-label="LinkedIn"
             >

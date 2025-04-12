@@ -8,6 +8,7 @@ import Skills from "@/components/Skills";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import Awards from "@/components/Awards";
 
 const Index = () => {
   useEffect(() => {
@@ -21,6 +22,7 @@ const Index = () => {
       <About />
       <Experience />
       <Skills />
+      <Awards />
       <ContactForm />
       <Footer />
       <ScrollToTop />
