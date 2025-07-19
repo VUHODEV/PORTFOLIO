@@ -21,8 +21,37 @@ const About = () => {
   const isInView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
-    <section id="about" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
+      <motion.div 
+        className="absolute top-10 right-20 w-64 h-64 bg-blue-400/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.6, 0.3],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-10 left-20 w-80 h-80 bg-indigo-400/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.5, 0.2],
+          rotate: [0, -180, -360],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -40,7 +69,7 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="text-xl font-semibold mb-4">Thông tin cá nhân</h3>
-            <div className="bg-light-blue/20 rounded-lg p-6 shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">
               <AboutItem 
                 icon={<Calendar size={20} />} 
                 label="Ngày sinh" 
@@ -49,7 +78,7 @@ const About = () => {
               <AboutItem 
                 icon={<Mail size={20} />} 
                 label="Email" 
-                value={<a href="mailto:duyuvi1092004@gmail.com" className="hover:text-blue-primary transition-colors">duyuvi1092004@gmail.com</a>} 
+                value={<a href="mailto:duyvu11092004@gmail.com" className="hover:text-blue-primary transition-colors">duyvu11092004@gmail.com</a>} 
               />
               <AboutItem 
                 icon={<Phone size={20} />} 
@@ -64,7 +93,7 @@ const About = () => {
               <AboutItem 
                 icon={<Globe size={20} />} 
                 label="Website / Facebook" 
-                value={<a href="https://fb.com/topcv.vn" target="_blank" rel="noopener noreferrer" className="hover:text-blue-primary transition-colors">facebook.com/topcv.vn</a>} 
+                value={<a href="https://www.facebook.com/hoduy.vu.72" target="_blank" rel="noopener noreferrer" className="hover:text-blue-primary transition-colors">https://www.facebook.com/hoduy.vu.72</a>} 
               />
             </div>
           </motion.div>
@@ -75,14 +104,14 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.4 }}
           >
             <h3 className="text-xl font-semibold mb-4">Mục tiêu nghề nghiệp</h3>
-            <div className="bg-light-blue/20 rounded-lg p-6 h-full shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 h-full shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">
               <p className="text-gray-700 leading-relaxed">
-                Hướng tới những công nghệ và những điều mới mẻ cần học hỏi. Luôn cố gắng tìm tòi và sáng tạo ra những điều nhỏ từ đó tạo ra những điều to lớn. Luôn cố gắng trong mọi công việc được giao.
+              Tôi là sinh viên Công nghệ thông tin định hướng chuyên sâu về phát triển Frontend với React.js và các công nghệ web hiện đại. Bên cạnh đó, tôi cũng tích cực tìm hiểu về backend và tích hợp AI nhằm xây dựng các sản phẩm thực tế hoàn thiện. Tôi yêu thích việc học hỏi công nghệ mới, làm việc nhóm và sẵn sàng thử thách bản thân trong môi trường thực tập để phát triển kỹ năng lập trình và tư duy hệ thống.
               </p>
 
               <div className="mt-8">
                 <h4 className="font-semibold mb-2">Học vấn</h4>
-                <div className="bg-white rounded p-4 shadow-sm">
+                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-4 shadow-md border border-blue-200">
                   <p className="font-medium">Công nghệ thông tin</p>
                   <p className="text-gray-600">Đại học Công Nghệ TP.HCM (2022 - 2026)</p>
                 </div>

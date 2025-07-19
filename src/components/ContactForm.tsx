@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -17,6 +17,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import emailjs from '@emailjs/browser';
+
+// Initialize EmailJS
+emailjs.init('Qmu97rGZ34pDwy_TH');
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -36,6 +40,7 @@ const ContactForm = () => {
   const { toast } = useToast();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.2 });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
@@ -47,17 +52,94 @@ const ContactForm = () => {
   });
 
   function onSubmit(values: FormValues) {
-    console.log(values);
-    toast({
-      title: "Gửi tin nhắn thành công!",
-      description: "Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm nhất có thể.",
+    setIsSubmitting(true);
+    
+    // EmailJS configuration - using simple template variables
+    const templateParams = {
+      user_name: values.name,
+      user_email: values.email,
+      message: values.message
+    };
+
+    console.log('Sending email with params:', templateParams);
+
+    // Send email using EmailJS
+    emailjs.send(
+      'service_934v1qi', // Your EmailJS service ID
+      'template_4mftiaj', // Your EmailJS template ID
+      templateParams
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      toast({
+        title: "Gửi tin nhắn thành công!",
+        description: "Cảm ơn bạn đã liên hệ. Tôi sẽ phản hồi sớm nhất có thể.",
+      });
+      form.reset();
+    })
+    .catch((error) => {
+      console.log('FAILED...', error);
+      console.log('Error details:', {
+        serviceId: 'service_934v1qi',
+        templateId: 'template_4mftiaj',
+        templateParams
+      });
+      toast({
+        title: "Có lỗi xảy ra!",
+        description: "Vui lòng thử lại sau hoặc liên hệ trực tiếp qua email.",
+        variant: "destructive",
+      });
+    })
+    .finally(() => {
+      setIsSubmitting(false);
     });
-    form.reset();
   }
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-light-blue/20 to-white">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 bg-gradient-to-r from-green-600/5 to-teal-600/5"></div>
+      <motion.div 
+        className="absolute top-10 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.3, 1],
+          opacity: [0.2, 0.6, 0.2],
+          rotate: [0, 180, 360],
+        }}
+        transition={{
+          duration: 18,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-10 right-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.4, 1],
+          opacity: [0.15, 0.5, 0.15],
+          rotate: [0, -180, -360],
+        }}
+        transition={{
+          duration: 20,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/3 right-1/3 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.7, 0.3],
+          rotate: [0, 360],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
+      
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +160,7 @@ const ContactForm = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="max-w-md mx-auto"
         >
-          <div className="bg-white rounded-lg p-6 shadow-sm">
+          <div className="bg-white/90 backdrop-blur-sm rounded-xl p-8 shadow-lg border border-green-100 hover:shadow-xl transition-all duration-300">
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
@@ -124,7 +206,13 @@ const ContactForm = () => {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full">Gửi tin nhắn</Button>
+                <Button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-green-600 to-teal-600 hover:from-green-700 hover:to-teal-700 text-white font-medium py-3 rounded-lg transition-all duration-200 hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? "Đang gửi..." : "Gửi tin nhắn"}
+                </Button>
               </form>
             </Form>
           </div>
