@@ -1,5 +1,5 @@
 
-import { Facebook, Mail, Phone, Github, Linkedin } from "lucide-react";
+import { Facebook, Mail, Phone, GitHub, Linkedin } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -38,18 +38,14 @@ const Footer = () => {
               <Phone size={20} />
             </a>
             <a 
-              href="https://github.com/hduyvu" 
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#" 
               className="hover:text-blue-100 transition-colors"
               aria-label="GitHub"
             >
-              <Github size={20} />
+              <GitHub size={20} />
             </a>
             <a 
-              href="https://linkedin.com/in/duyvu" 
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#" 
               className="hover:text-blue-100 transition-colors"
               aria-label="LinkedIn"
             >

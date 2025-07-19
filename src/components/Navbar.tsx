@@ -10,7 +10,6 @@ const navItems = [
   { title: "Học vấn", href: "#education" },
   { title: "Kinh nghiệm", href: "#experience" },
   { title: "Kỹ năng", href: "#skills" },
-  { title: "Dự án", href: "#projects" },
   { title: "Liên hệ", href: "#contact" },
 ];
 
