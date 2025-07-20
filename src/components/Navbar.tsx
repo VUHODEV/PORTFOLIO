@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, Download, Code, User, Award, Mail, Home } from "lucide-react";
+import { Menu, X, Download, Code, User, Award, Mail, Home, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -10,6 +10,7 @@ const navItems = [
   { title: "Kỹ năng", href: "#skills", icon: Code },
   { title: "Dự án", href: "#projects", icon: Code },
   { title: "Giải thưởng", href: "#awards", icon: Award },
+  { title: "Chứng nhận", href: "#certificates", icon: FileText },
   { title: "Liên hệ", href: "#contact", icon: Mail },
 ];
 

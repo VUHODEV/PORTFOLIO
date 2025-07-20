@@ -370,39 +370,7 @@ const Awards = () => {
                 </div>
               </div>
 
-              {/* Category Navigation */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.7 }}
-                className="mt-8"
-              >
-                <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-6 border border-blue-200 shadow-lg">
-                  <div className="text-center mb-4">
-                    <h4 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-                      <Image className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600" />
-                      Danh mục Chứng nhận
-                    </h4>
-                    <p className="text-sm sm:text-base text-gray-600">
-                      Khám phá thêm các chứng nhận và thành tích từ các cuộc thi học thuật
-                    </p>
-                  </div>
-                  
-                  <motion.div
-                    className="flex justify-center"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <a 
-                      href="#certificates"
-                      className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium rounded-xl transition-all duration-300 hover:shadow-lg shadow-md"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Xem Chứng nhận tham gia cuộc thi học thuật
-                    </a>
-                  </motion.div>
-                </div>
-              </motion.div>
+
             </motion.div>
           </div>
         </div>
