@@ -32,7 +32,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden"
+      className="min-h-screen flex items-center pt-20 sm:pt-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden"
     >
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5"></div>
@@ -125,10 +125,10 @@ const Hero = () => {
         </>
       )}
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 pt-8 sm:pt-0">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <motion.div
-            className="md:w-1/2"
+            className="w-full md:w-1/2 text-center md:text-left"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
@@ -215,7 +215,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="md:w-1/2 flex justify-center"
+            className="w-full md:w-1/2 flex justify-center mt-8 md:mt-0"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
