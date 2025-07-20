@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
 import { motion } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface Project {
   id: number;
@@ -37,49 +37,68 @@ const projects: Project[] = [
 ];
 
 const Projects = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   return (
     <section id="projects" className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative overflow-hidden">
-      {/* Animated background elements */}
+      {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-pink-600/5"></div>
-      <motion.div 
-        className="absolute top-10 left-20 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.3, 1],
-          opacity: [0.2, 0.6, 0.2],
-          rotate: [0, 180, 360],
-        }}
-        transition={{
-          duration: 14,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div 
-        className="absolute bottom-10 right-20 w-96 h-96 bg-pink-400/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.4, 1],
-          opacity: [0.15, 0.5, 0.15],
-          rotate: [0, -180, -360],
-        }}
-        transition={{
-          duration: 16,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-      <motion.div 
-        className="absolute top-1/3 right-1/3 w-64 h-64 bg-orange-400/10 rounded-full blur-3xl"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.3, 0.7, 0.3],
-          rotate: [0, 360],
-        }}
-        transition={{
-          duration: 12,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
+      
+      {/* Reduced background animations - only on desktop */}
+      {!isMobile && (
+        <>
+          <motion.div 
+            className="absolute top-10 left-20 w-80 h-80 bg-purple-400/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.2, 1],
+              opacity: [0.2, 0.4, 0.2],
+              rotate: [0, 90, 180],
+            }}
+            transition={{
+              duration: 20,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div 
+            className="absolute bottom-10 right-20 w-96 h-96 bg-pink-400/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.3, 1],
+              opacity: [0.15, 0.4, 0.15],
+              rotate: [0, -90, -180],
+            }}
+            transition={{
+              duration: 25,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+          <motion.div 
+            className="absolute top-1/3 right-1/3 w-64 h-64 bg-orange-400/10 rounded-full blur-3xl"
+            animate={{
+              scale: [1, 1.1, 1],
+              opacity: [0.3, 0.5, 0.3],
+              rotate: [0, 180],
+            }}
+            transition={{
+              duration: 18,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </>
+      )}
       
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
@@ -88,27 +107,27 @@ const Projects = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
           Dự Án Nổi Bật
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto">
           Tổng hợp các dự án đã thực hiện với đa dạng công nghệ và lĩnh vực khác nhau
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: isMobile ? -2 : -5 }}
               className="group"
             >
               <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 backdrop-blur-sm border border-purple-100">
                 <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100">
-                  <div className="w-full h-64 flex items-center justify-center">
+                  <div className="w-full h-48 sm:h-64 flex items-center justify-center">
                     {project.image && project.image !== "/placeholder.svg" ? (
                       <img 
                         src={project.image} 
@@ -120,12 +139,12 @@ const Projects = () => {
                       />
                     ) : (
                       <div className="text-center">
-                        <div className="w-20 h-20 mx-auto mb-4 bg-blue-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white text-3xl font-bold">
+                        <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 bg-blue-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white text-2xl sm:text-3xl font-bold">
                             {project.title.charAt(0)}
                           </span>
                         </div>
-                        <p className="text-gray-600 font-medium text-lg">{project.title}</p>
+                        <p className="text-gray-600 font-medium text-base sm:text-lg">{project.title}</p>
                       </div>
                     )}
                   </div>
@@ -133,10 +152,10 @@ const Projects = () => {
                 </div>
                 
                 <CardHeader className="pb-4">
-                  <CardTitle className="text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
+                  <CardTitle className="text-lg sm:text-xl font-semibold text-gray-900 group-hover:text-blue-600 transition-colors duration-300">
                     {project.title}
                   </CardTitle>
-                  <CardDescription className="text-gray-600 leading-relaxed">
+                  <CardDescription className="text-sm sm:text-base text-gray-600 leading-relaxed">
                     {project.description}
                   </CardDescription>
                 </CardHeader>
@@ -161,7 +180,7 @@ const Projects = () => {
                       className="flex-1 group/btn"
                       onClick={() => window.open(project.githubUrl, '_blank')}
                     >
-                      <Github className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
+                      <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
                       GitHub
                     </Button>
                     <Button
@@ -169,7 +188,7 @@ const Projects = () => {
                       className="flex-1 group/btn"
                       onClick={() => window.open(project.liveUrl, '_blank')}
                     >
-                      <ExternalLink className="w-4 h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
+                      <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
                       Live Demo
                     </Button>
                   </div>
@@ -191,7 +210,7 @@ const Projects = () => {
             className="group"
             onClick={() => window.open('https://github.com/VUHODEV', '_blank')}
           >
-            <Github className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
+            <Github className="w-4 h-4 sm:w-5 sm:h-5 mr-2 group-hover:scale-110 transition-transform duration-200" />
             View All Projects on GitHub
           </Button>
         </motion.div>
