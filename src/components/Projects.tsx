@@ -34,6 +34,15 @@ const projects: Project[] = [
     githubUrl: "https://github.com/VUHODEV/CODEPROTALK",
     liveUrl: "https://codeprotalk.vercel.app"
   },
+  {
+    id: 3,
+    title: "Portfolio Cá Nhân",
+    description: "Website Portfolio cá nhân giới thiệu về Hồ Duy Vũ, các kỹ năng, dự án, giải thưởng và thông tin liên hệ. Giao diện hiện đại, responsive, sử dụng React, TypeScript, Tailwind CSS và Vite. Tối ưu trải nghiệm người dùng, dễ dàng mở rộng và cập nhật nội dung.",
+    image: "/images/respon/Portfolio.png",
+    techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    githubUrl: "https://github.com/VUHODEV/PORTFOLIO",
+    liveUrl: "https://portfolio-vuho.vercel.app"
+  },
 ];
 
 const Projects = () => {
@@ -115,7 +124,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -125,7 +134,8 @@ const Projects = () => {
               whileHover={{ y: isMobile ? -2 : -5 }}
               className="group"
             >
-              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 backdrop-blur-sm border border-purple-100">
+              <Card className="h-full overflow-hidden border-0 shadow-lg hover:shadow-xl transition-all duration-300 bg-white/90 backdrop-blur-sm border border-purple-100 flex flex-col"
+              >
                 <div className="relative overflow-hidden bg-gradient-to-br from-blue-50 to-indigo-100">
                   <div className="w-full h-48 sm:h-64 flex items-center justify-center">
                     {project.image && project.image !== "/placeholder.svg" ? (
@@ -160,7 +170,7 @@ const Projects = () => {
                   </CardDescription>
                 </CardHeader>
 
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 flex flex-col flex-1 justify-end">
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.techStack.map((tech) => (
                       <Badge
@@ -173,11 +183,11 @@ const Projects = () => {
                     ))}
                   </div>
 
-                  <div className="flex gap-3">
+                  <div className="grid grid-cols-2 gap-3">
                     <Button
                       variant="outline"
                       size="sm"
-                      className="flex-1 group/btn"
+                      className="w-full group/btn"
                       onClick={() => window.open(project.githubUrl, '_blank')}
                     >
                       <Github className="w-3 h-3 sm:w-4 sm:h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />
@@ -185,7 +195,7 @@ const Projects = () => {
                     </Button>
                     <Button
                       size="sm"
-                      className="flex-1 group/btn"
+                      className="w-full group/btn"
                       onClick={() => window.open(project.liveUrl, '_blank')}
                     >
                       <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 mr-2 group-hover/btn:scale-110 transition-transform duration-200" />

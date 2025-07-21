@@ -1,8 +1,8 @@
-
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Menu, X, Download, Code, User, Award, Mail, Home, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const navItems = [
   { title: "Trang chủ", href: "#home", icon: Home },
@@ -55,20 +55,40 @@ const Navbar = () => {
         {/* Desktop menu */}
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item, index) => (
-            <motion.a
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-2 text-gray-700 hover:text-blue-primary font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-50/50"
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
-            >
-              <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
-              {item.title}
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
-            </motion.a>
+            item.href.startsWith("/") ? (
+              <motion.div
+                key={item.href}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <Link
+                  to={item.href}
+                  className="flex items-center gap-2 text-gray-700 hover:text-blue-primary font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-50/50"
+                >
+                  <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
+                  {item.title}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
+                </Link>
+              </motion.div>
+            ) : (
+              <motion.a
+                key={item.href}
+                href={item.href}
+                className="flex items-center gap-2 text-gray-700 hover:text-blue-primary font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-50/50"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+              >
+                <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
+                {item.title}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-300 group-hover:w-full rounded-full"></span>
+              </motion.a>
+            )
           ))}
           <motion.a 
             href="/CV.pdf" 
@@ -113,20 +133,40 @@ const Navbar = () => {
         >
           <div className="container mx-auto px-6 flex flex-col space-y-2">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.href}
-                href={item.href}
-                className="flex items-center gap-3 text-gray-700 hover:text-blue-primary font-medium py-4 px-4 rounded-lg hover:bg-blue-50/50 transition-all duration-200 border-b border-gray-100/50"
-                onClick={() => setIsOpen(false)}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-                whileHover={{ x: 5 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <item.icon size={18} className="opacity-70" />
-                {item.title}
-              </motion.a>
+              item.href.startsWith("/") ? (
+                <motion.div
+                  key={item.href}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to={item.href}
+                    className="flex items-center gap-3 text-gray-700 hover:text-blue-primary font-medium py-4 px-4 rounded-lg hover:bg-blue-50/50 transition-all duration-200 border-b border-gray-100/50"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <item.icon size={18} className="opacity-70" />
+                    {item.title}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  className="flex items-center gap-3 text-gray-700 hover:text-blue-primary font-medium py-4 px-4 rounded-lg hover:bg-blue-50/50 transition-all duration-200 border-b border-gray-100/50"
+                  onClick={() => setIsOpen(false)}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <item.icon size={18} className="opacity-70" />
+                  {item.title}
+                </motion.a>
+              )
             ))}
             <motion.div 
               className="pt-4"
