@@ -63,7 +63,6 @@ const Projects = () => {
     <section id="projects" className="py-20 bg-gradient-to-br from-purple-50 via-pink-50 to-orange-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-pink-600/5"></div>
-      
       {/* Reduced background animations - only on desktop */}
       {!isMobile && (
         <>
@@ -108,7 +107,6 @@ const Projects = () => {
           />
         </>
       )}
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

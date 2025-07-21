@@ -36,7 +36,6 @@ const About = () => {
     <section id="about" className="py-20 bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-indigo-600/5"></div>
-      
       {/* Reduced background animations - only on desktop */}
       {!isMobile && (
         <>
@@ -68,7 +67,6 @@ const About = () => {
           />
         </>
       )}
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
@@ -85,12 +83,13 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           <motion.div
+            className="h-full"
             initial={{ opacity: 0, x: -20 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-4">Thông tin cá nhân</h3>
-            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">
+            <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300 h-full">
               <AboutItem 
                 icon={<Calendar size={18} className="sm:w-5 sm:h-5" />} 
                 label="Ngày sinh" 
@@ -120,6 +119,7 @@ const About = () => {
           </motion.div>
 
           <motion.div
+            className="h-full"
             initial={{ opacity: 0, x: 20 }}
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
             transition={{ duration: 0.5, delay: 0.4 }}

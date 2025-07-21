@@ -111,7 +111,6 @@ const ContactForm = () => {
     <section id="contact" className="py-20 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-green-600/5 to-teal-600/5"></div>
-      
       {/* Reduced background animations - only on desktop */}
       {!isMobile && (
         <>
@@ -156,7 +155,6 @@ const ContactForm = () => {
           />
         </>
       )}
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}

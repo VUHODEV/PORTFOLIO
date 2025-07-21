@@ -99,7 +99,6 @@ const Awards = () => {
     <section id="awards" className="py-20 bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-600/5 to-yellow-600/5"></div>
-      
       {/* Reduced background animations - only on desktop */}
       {!isMobile && (
         <>
@@ -144,7 +143,6 @@ const Awards = () => {
           />
         </>
       )}
-      
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -161,16 +159,16 @@ const Awards = () => {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start h-full">
             {/* Left side - Main Image */}
             <motion.div
+              className="space-y-6 h-full"
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="space-y-6"
             >
-              <div className="relative group">
-                <div className="w-full h-[500px] sm:h-[600px] rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300 group-hover:scale-[1.02]">
+              <div className="relative group h-full">
+                <div className="w-full h-[600px] sm:h-[770px] rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300 group-hover:scale-[1.02] h-full">
                   <img 
                     src="/images/Vuho.jpg" 
                     alt="Hồ Duy Vũ - IT GOT TALENT 2024" 
@@ -238,10 +236,10 @@ const Awards = () => {
 
             {/* Right side - Awards list */}
             <motion.div
+              className="space-y-8 h-full"
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="space-y-8"
             >
               {/* Award Summary Card */}
               <motion.div
