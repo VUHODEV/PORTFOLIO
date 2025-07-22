@@ -38,16 +38,11 @@ const Navbar = () => {
           ? "bg-white/90 shadow-xl border-b border-gray-200/50 py-3" 
           : "bg-transparent py-5"
       }`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <motion.a 
           href="#home" 
           className="font-bold text-2xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700 transition-all duration-300"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
         >
           Hồ Duy Vũ
         </motion.a>
@@ -60,9 +55,6 @@ const Navbar = () => {
                 key={item.href}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <Link
                   to={item.href}
@@ -78,11 +70,6 @@ const Navbar = () => {
                 key={item.href}
                 href={item.href}
                 className="flex items-center gap-2 text-gray-700 hover:text-blue-primary font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-blue-50/50"
-                whileHover={{ scale: 1.05, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
               >
                 <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
                 {item.title}

@@ -70,9 +70,6 @@ const About = () => {
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">Về Tôi</h2>
@@ -83,10 +80,11 @@ const About = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           <motion.div
-            className="h-full"
-            initial={{ opacity: 0, x: -20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            className="h-full bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-100 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-4">Thông tin cá nhân</h3>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300 h-full">
@@ -119,10 +117,11 @@ const About = () => {
           </motion.div>
 
           <motion.div
-            className="h-full"
-            initial={{ opacity: 0, x: 20 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            className="mt-10 sm:mt-0 h-full bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-blue-100 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
           >
             <h3 className="text-lg sm:text-xl font-semibold mb-4">Mục tiêu nghề nghiệp</h3>
             <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 h-full shadow-lg border border-blue-100 hover:shadow-xl transition-all duration-300">

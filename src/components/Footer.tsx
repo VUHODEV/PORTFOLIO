@@ -24,16 +24,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
-          <div className="flex-1 text-center">
-            <h4 className="font-semibold text-xl mb-4">Liên kết nhanh</h4>
-            <div className="flex flex-col gap-2">
-              <a href="#about" className="text-gray-300 hover:text-white transition-colors">Về tôi</a>
-              <a href="#skills" className="text-gray-300 hover:text-white transition-colors">Kỹ năng</a>
-              <a href="#projects" className="text-gray-300 hover:text-white transition-colors">Dự án</a>
-              <a href="#awards" className="text-gray-300 hover:text-white transition-colors">Giải thưởng</a>
-            </div>
-          </div>
+          
 
           {/* Contact & Social */}
           <div className="flex-1 text-center md:text-right flex flex-col items-center md:items-end">

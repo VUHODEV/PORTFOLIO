@@ -160,10 +160,11 @@ const Skills = () => {
             {skillsData.map((category, idx) => (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-indigo-100 hover:shadow-xl transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: idx * 0.1 }}
+                className="bg-white/80 backdrop-blur-sm rounded-xl p-4 sm:p-6 shadow-lg border border-indigo-100 hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
               >
                 <h3 className="text-lg sm:text-xl font-semibold mb-4 text-gray-800 flex items-center gap-2">
                   {getCategoryIcon(category.category)}
@@ -179,8 +180,8 @@ const Skills = () => {
                     <motion.span
                       key={index}
                       variants={itemVariants}
+                      whileHover={{ scale: 1.08 }}
                       className="inline-block px-3 py-1 bg-gradient-to-r from-blue-100 to-indigo-100 text-blue-800 text-xs sm:text-sm font-medium rounded-full border border-blue-200 hover:from-blue-200 hover:to-indigo-200 transition-all duration-200"
-                      whileHover={{ scale: isMobile ? 1.02 : 1.05 }}
                     >
                       {skill}
                     </motion.span>

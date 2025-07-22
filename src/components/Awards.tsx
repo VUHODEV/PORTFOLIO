@@ -99,50 +99,6 @@ const Awards = () => {
     <section id="awards" className="py-20 bg-gradient-to-br from-orange-50 via-yellow-50 to-green-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-orange-600/5 to-yellow-600/5"></div>
-      {/* Reduced background animations - only on desktop */}
-      {!isMobile && (
-        <>
-          <motion.div 
-            className="absolute top-20 right-10 w-80 h-80 bg-orange-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.4, 0.2],
-              rotate: [0, 90, 180],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-20 left-10 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.15, 0.4, 0.15],
-              rotate: [0, -90, -180],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div 
-            className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-green-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-              rotate: [0, 180],
-            }}
-            transition={{
-              duration: 18,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        </>
-      )}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -279,10 +235,11 @@ const Awards = () => {
                   {outstandingAwards.map((award, index) => (
                     <motion.div
                       key={award.id}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-                      className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.7, delay: 0.3 + index * 0.1 }}
+                      className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
                     >
                       <div className="flex-shrink-0 mt-1">
                         {award.icon}
@@ -337,10 +294,11 @@ const Awards = () => {
                   {certificates.map((certificate, index) => (
                     <motion.div
                       key={certificate.id}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-                      className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.7, delay: 0.5 + index * 0.1 }}
+                      className="flex items-start gap-4 p-4 bg-white rounded-lg shadow-md hover:shadow-2xl hover:scale-[1.03] transition-all duration-300"
                     >
                       <div className="flex-shrink-0 mt-1">
                         {certificate.icon}
@@ -395,12 +353,13 @@ const Awards = () => {
             {certificateImages.map((cert, index) => (
               <motion.div
                 key={cert.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.05 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.7, delay: index * 0.05 }}
                 className="group cursor-pointer h-full"
               >
-                <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 bg-white h-full flex flex-col">
+                <div className="relative overflow-hidden rounded-lg shadow-lg hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 bg-white h-full flex flex-col">
                   <div className="flex-shrink-0">
                     <img
                       src={cert.image}

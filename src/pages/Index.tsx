@@ -31,9 +31,6 @@ const Index = () => {
             <div className="relative bg-white rounded-2xl shadow-2xl p-8 pt-14 max-w-lg w-full text-center border border-blue-100 animate-fade-in">
               <motion.div
                 className="flex justify-center mb-2"
-                initial={{ rotate: -10, scale: 1 }}
-                animate={{ rotate: [ -10, 10, -10 ], scale: [1, 1.2, 1] }}
-                transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
               >
                 <Zap size={40} className="text-yellow-400 drop-shadow-lg" />
               </motion.div>

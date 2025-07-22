@@ -111,55 +111,9 @@ const ContactForm = () => {
     <section id="contact" className="py-20 bg-gradient-to-br from-green-50 via-teal-50 to-cyan-50 relative overflow-hidden">
       {/* Simplified background for mobile */}
       <div className="absolute inset-0 bg-gradient-to-r from-green-600/5 to-teal-600/5"></div>
-      {/* Reduced background animations - only on desktop */}
-      {!isMobile && (
-        <>
-          <motion.div 
-            className="absolute top-10 left-20 w-80 h-80 bg-green-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.2, 1],
-              opacity: [0.2, 0.4, 0.2],
-              rotate: [0, 90, 180],
-            }}
-            transition={{
-              duration: 25,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div 
-            className="absolute bottom-10 right-20 w-96 h-96 bg-teal-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.3, 1],
-              opacity: [0.15, 0.4, 0.15],
-              rotate: [0, -90, -180],
-            }}
-            transition={{
-              duration: 30,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-          <motion.div 
-            className="absolute top-1/3 right-1/3 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"
-            animate={{
-              scale: [1, 1.1, 1],
-              opacity: [0.3, 0.5, 0.3],
-              rotate: [0, 180],
-            }}
-            transition={{
-              duration: 20,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-          />
-        </>
-      )}
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           ref={ref}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >

@@ -24,18 +24,6 @@ const AnimatedBackground = () => {
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
           }}
-          animate={{
-            y: [0, -100, 0],
-            x: [0, Math.random() * 50 - 25, 0],
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0],
-          }}
-          transition={{
-            duration: Math.random() * 10 + 10,
-            repeat: Infinity,
-            delay: Math.random() * 5,
-            ease: "linear",
-          }}
         />
       ))}
 
@@ -47,18 +35,6 @@ const AnimatedBackground = () => {
           style={{
             left: `${Math.random() * 100}%`,
             top: `${Math.random() * 100}%`,
-          }}
-          animate={{
-            y: [0, -50, 0],
-            x: [0, Math.random() * 100 - 50, 0],
-            rotate: [0, 360],
-            scale: [0.5, 1, 0.5],
-          }}
-          transition={{
-            duration: Math.random() * 15 + 15,
-            repeat: Infinity,
-            delay: Math.random() * 10,
-            ease: "easeInOut",
           }}
         >
           <div className="w-4 h-4 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full" />
@@ -103,16 +79,6 @@ const AnimatedBackground = () => {
             width: `${Math.random() * 100 + 50}px`,
             height: `${Math.random() * 100 + 50}px`,
             borderRadius: Math.random() > 0.5 ? '50%' : '0%',
-          }}
-          animate={{
-            rotate: [0, 360],
-            scale: [0.8, 1.2, 0.8],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: Math.random() * 20 + 20,
-            repeat: Infinity,
-            ease: "linear",
           }}
         />
       ))}
