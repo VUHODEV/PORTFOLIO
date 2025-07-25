@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Download, Mail, Code, Zap, Cpu, Database, Globe, Smartphone, Monitor, Server, Wifi, Shield } from "lucide-react";
@@ -51,10 +50,18 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center pt-20 sm:pt-16 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden"
+      className="min-h-screen flex items-center pt-20 sm:pt-16 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/images/blog3.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     >
+      {/* Overlay tối giúp chữ nổi bật */}
+      <div className="absolute inset-0 bg-black/40 z-0"></div>
       {/* Animated gradient background */}
-      <div className="absolute inset-0 z-0 animate-gradient-move bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" />
+      {/* <div className="absolute inset-0 z-0 animate-gradient-move bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" /> */}
       <style>{`
         @keyframes gradient-move {
           0% {
@@ -134,7 +141,7 @@ const Hero = () => {
             transition={{ duration: 0.7 }}
           >
             <motion.h2
-              className="text-lg text-blue-600 font-medium mb-2"
+              className="text-lg text-white font-medium mb-2 drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -143,7 +150,7 @@ const Hero = () => {
               Xin chào, tôi là
             </motion.h2>
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -152,7 +159,7 @@ const Hero = () => {
               Hồ Duy Vũ
             </motion.h1>
             <motion.h3
-              className="text-xl md:text-2xl text-gray-700 mb-6 font-semibold"
+              className="text-xl md:text-2xl text-white mb-6 font-semibold drop-shadow-lg"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
@@ -161,7 +168,7 @@ const Hero = () => {
               Software Engineer
             </motion.h3>
             <motion.p
-              className="text-gray-600 mb-8 max-w-lg leading-relaxed"
+              className="text-white mb-8 max-w-lg leading-relaxed drop-shadow"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}

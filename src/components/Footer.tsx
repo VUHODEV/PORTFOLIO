@@ -5,7 +5,15 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white py-12 px-2 sm:px-0 relative overflow-hidden shadow-2xl border-t border-white/10">
+    <footer
+      className="bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white py-12 px-2 sm:px-0 relative overflow-hidden shadow-2xl border-t border-white/10"
+      style={{
+        backgroundImage: "url('/images/blog3.jpg')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="container mx-auto px-4 sm:px-8 relative z-10">
         <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-10 mb-8">
           {/* Personal Info */}
