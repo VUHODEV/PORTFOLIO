@@ -215,7 +215,7 @@ const Hero = () => {
           </motion.div>
 
           <motion.div
-            className="w-full md:w-1/2 flex justify-center mt-8 md:mt-0"
+            className="w-full md:w-1/2 flex justify-center mt-8 md:mt-0 order-first md:order-none"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
