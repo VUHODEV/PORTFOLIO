@@ -18,6 +18,9 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // Thêm biến màu chữ cho navbar
+  const navTextColor = scrolled ? "text-gray-900 hover:text-blue-700" : "text-white hover:text-blue-200";
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -58,7 +61,7 @@ const Navbar = () => {
               >
                 <Link
                   to={item.href}
-                  className="flex items-center gap-2 text-white hover:text-blue-200 font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-white/10"
+                  className={`flex items-center gap-2 font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-white/10 ${navTextColor}`}
                 >
                   <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
                   {item.title}
@@ -69,7 +72,7 @@ const Navbar = () => {
               <motion.a
                 key={item.href}
                 href={item.href}
-                className="flex items-center gap-2 text-white hover:text-blue-200 font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-white/10"
+                className={`flex items-center gap-2 font-medium transition-all duration-300 relative group px-3 py-2 rounded-lg hover:bg-white/10 ${navTextColor}`}
               >
                 <item.icon size={16} className="opacity-70 group-hover:opacity-100 transition-opacity" />
                 {item.title}
